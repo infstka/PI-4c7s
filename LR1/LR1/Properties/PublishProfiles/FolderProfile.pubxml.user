@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Этот файл используется процессом публикации или упаковки вашего веб-проекта. Можно настроить поведение этого процесса,
+изменив этот файл MSBuild. Подробности см. на странице https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\BSTU\PI-4c7s\LR1\publish</_PublishTargetUrl>
+    <History>True|2023-09-25T14:37:17.9961354Z;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/LR1.dll">
+      <publishTime>09/25/2023 17:37:11</publishTime>
+    </File>
+    <File Include="bin/LR1.pdb">
+      <publishTime>09/25/2023 17:37:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>09/05/2018 19:10:50</publishTime>
+    </File>
+    <File Include="bootstrap.css">
+      <publishTime>09/15/2023 10:15:08</publishTime>
+    </File>
+    <File Include="index.html">
+      <publishTime>09/25/2023 17:27:24</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/25/2023 17:37:16</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

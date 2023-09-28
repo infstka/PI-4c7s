@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>PI - LR1</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>PI - LR1</h2>
+
+        <!-- кнопки для выполнения различных HTTP-запросов -->
+        <button onclick="sendGetRequest()" style="background-color: #007bff; color: white;">GET</button>
+        <button onclick="sendPostRequest()" style="background-color: #28a745; color: white;">POST</button>
+        <button onclick="sendPutRequest()" style="background-color: #ffc107; color: black;">PUT</button>
+        <button onclick="sendDeleteRequest()" style="background-color: #dc3545; color: white;">DELETE</button>
+        <br><br>
+
+        <!-- поле ввода значения для POST и PUT запросов -->
+        <label for="inputValue">Ввести значение:</label>
+        <input type="text" id="inputValue">
+        <br><br>
+
+        <!-- поле вывода результатов запросов -->
+        <pre id="result" class="mt-2"></pre>
+    </div>
+
+    <script>
+        //получение элемента для вывода результатов
+        const resultElement = $('#result'); 
+        //получение элемента для ввода значения
+        const inputValueElement = $('#inputValue'); 
+
+        //GET-запрос
+        function sendGetRequest() {
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:1489/zxc.bgs', //URL GET-запроса
+                success: function (data) {
+                    resultElement.text(JSON.stringify(data, null, 2));
+                },
+                error: function (error) {
+                    resultElement.text(error.responseText);
+                    console.error('GET Request Error:', error);
+                }
+            });
+        }
+
+        //POST-запрос
+        function sendPostRequest() {
+            //получение значения из поля ввода
+            const resultParameter = inputValueElement.val(); 
+            if (resultParameter !== '') {
+                $.ajax({
+                    type: 'POST',
+                    url: `http://localhost:1489/zxc.bgs?result=${resultParameter}`, //URL POST-запрос
+                    success: function () {
+                        resultElement.text('POST Request Successful');
+                    },
+                    error: function (error) {
+                        resultElement.text(error.responseText); 
+                        console.error('POST Request Error:', error);
+                    }
+                });
+            }
+        }
+
+        //PUT-запрос
+        function sendPutRequest() {
+            //получение значения из поля ввода
+            const addParameter = inputValueElement.val(); 
+            if (addParameter !== '') {
+                $.ajax({
+                    type: 'PUT',
+                    url: `http://localhost:1489/zxc.bgs?add=${addParameter}`, //URL PUT-запроса
+                    success: function () {
+                        resultElement.text('PUT Request Successful'); 
+                    },
+                    error: function (error) {
+                        resultElement.text(error.responseText); 
+                        console.error('PUT Request Error:', error);
+                    }
+                });
+            }
+        }
+
+        //DELETE-запрос
+        function sendDeleteRequest() {
+            $.ajax({
+                type: 'DELETE',
+                url: 'http://localhost:1489/zxc.bgs', //URL DELETE-запроса
+                success: function () {
+                    resultElement.text('DELETE Request Successful');
+                },
+                error: function (error) {
+                    resultElement.text(error.responseText);
+                    console.error('DELETE Request Error:', error);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
