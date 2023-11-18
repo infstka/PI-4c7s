@@ -1,0 +1,533 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="~/Scripts/jquery-3.6.1.min.js"></script>
+    <script>
+        function PostStudent(url, method) {
+            document.getElementById("err_msg").textContent = "";
+
+            var type = $("input[type='radio'][name='type']:checked").val();
+
+            if (url == null) {
+                url = 'https://localhost:44322/api/students.' + type + '/';
+            } else {
+                url = url.replace('.json/', '.').replace('.xml/', '.') + type + '/';
+            }
+
+            if (method == null) {
+                method = 'post';
+            }
+
+            fetch(url, {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: document.getElementById('name').value,
+                    phone: document.getElementById('phone').value
+                })
+            }).then(response => {
+                if (!response.ok) {
+                    return response.json().then(errorData => {
+                        throw new Error(`HTTP Error: ${response.status} - ${response.statusText}\n${JSON.stringify(errorData)}`);
+                    });
+                }
+            })
+                .catch(err => {
+                    try {
+                        var errorData = JSON.parse(err.message.substring(err.message.indexOf("{")));
+                        var detailsLink = errorData.linkForDetailes.details;
+                        document.getElementById("err_msg").innerHTML = `HTTP Error: ${errorData.code} - Bad Request. <a href="${detailsLink}" target="_blank">Details</a>`;
+                    } catch (SyntaxError) {
+                        document.getElementById("err_msg").textContent = err;
+                    }
+                });
+        }
+
+        function GetStudents(url, method) {
+            document.getElementById("err_msg").textContent = "";
+
+            var type = $("input[type='radio'][name='type']:checked").val();
+
+            if (url == null) {
+                url = 'https://localhost:44322/api/students.' + type + '/';
+            } else {
+                url = url.replace('.json', '.').replace('.xml', '.') + type + '/';
+            }
+
+            if (method == null) {
+                method = 'get';
+            }
+
+            fetch(FormUrl(url), {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/' + type,
+                    'Accept': 'application/' + type,
+                },
+            }).then(response => {
+                if (!response.ok) {
+                    return response.text().then(text => { throw new Error(text) })
+                }
+                else {
+                    if (type == "xml") {
+                        return response.text()
+                    } else {
+                        return response.json();
+                    }
+                }
+            })
+                .then(data => {
+                    if (type == "xml") {
+                        xmltable(data);
+                    } else {
+                        constructTable(data);
+                    }
+
+                })
+                .catch(err => {
+                    document.getElementById("err_msg").textContent = err;
+                });
+        }
+
+        function GetStudentById(url, method) {
+            document.getElementById("err_msg").textContent = "";
+
+            var type = $("input[type='radio'][name='type']:checked").val(); // json или xml
+
+            url = url.replace('.json', '.' + type);
+            url = url.replace('.xml', '.' + type);
+
+            fetch(url, {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/' + type,
+                    'Accept': 'application/' + type,
+                },
+            }).then(response => {
+                if (!response.ok) {
+                    return response.json().then(errorData => {
+                        throw new Error(`HTTP Error: ${response.status} - ${response.statusText}\n${JSON.stringify(errorData)}`);
+                    });
+                }
+                else {
+                    if (type == "xml") {
+                        return response.text();
+                    } else {
+                        return response.json();
+                    }
+                }
+            })
+                .then(data => {
+                    if (type == "xml") {
+                        xmltable(data);
+                    } else {
+                        constructTable(data);
+                    }
+                })
+                .catch(err => {
+                    try {
+                        var errorData = JSON.parse(err.message.substring(err.message.indexOf("{")));
+                        var detailsLink = errorData.linkForDetailes.details;
+                        document.getElementById("err_msg").innerHTML = `HTTP Error: ${errorData.code} - Bad Request. <a href="${detailsLink}" target="_blank">Details</a>`;
+                    } catch (SyntaxError) {
+                        document.getElementById("err_msg").textContent = err;
+                    }
+                });
+        }
+
+
+        function FormUrl(url) {
+            var params = []
+
+            var limit = document.getElementById('limit').value;
+            if (limit.length !== 0) {
+                params.push('limit=' + limit);
+            }
+
+            var offset = document.getElementById('offset').value;
+            if (offset.length !== 0) {
+                params.push('offset=' + offset);
+            }
+
+            var sort = document.getElementById("sort").checked;
+            if (sort === true) {
+                params.push('sort');
+            }
+
+            var maxid = document.getElementById('maxid').value;
+            if (maxid.length !== 0) {
+                params.push('maxid=' + maxid);
+            }
+
+            var minid = document.getElementById('minid').value;
+            if (minid.length !== 0) {
+                params.push('minid=' + minid);
+            }
+
+            var like = document.getElementById('like').value;
+            if (like.length !== 0) {
+                params.push('like=' + like);
+            }
+
+            var columns = document.getElementById('columns').value;
+            if (columns.length !== 0) {
+                params.push('columns=' + columns);
+            }
+
+            var globalike = document.getElementById('globalike').value;
+            if (globalike.length !== 0) {
+                params.push('globalike=' + globalike);
+            }
+
+            if (params.length !== 0) {
+                url = url + '?' + params.join('&')
+            }
+
+            return url;
+        }
+
+        //function HateoasGetById(url, Method) {
+        //    document.getElementById("err_msg").textContent = "";
+
+        //    fetch(url, {
+        //        method: Method,
+        //        headers: {
+        //            'Content-Type': 'application/json',
+        //        },
+        //    })
+        //        .then(res => {
+        //            if (!res.ok) {
+        //                return res.text().then(text => { throw new Error(text) })
+        //            }
+        //            else {
+        //                return res.json();
+        //            }
+        //        })
+        //        .then((data) => constructTable(data))
+        //        .catch(err => {
+        //            document.getElementById("err_msg").textContent = err;
+        //        });
+        //};
+
+        //function HateoasGetAll(url, Method) {
+        //    document.getElementById("err_msg").textContent = "";
+
+        //    fetch(url, {
+        //        method: Method,
+        //        headers: {
+        //            'Content-Type': 'application/json',
+        //        },
+        //    })
+        //        .then(res => {
+        //            if (!res.ok) {
+        //                return res.text().then(text => { throw new Error(text) })
+        //            }
+        //            else {
+        //                return res.json();
+        //            }
+        //        })
+        //        .then((data) => constructTable(data))
+        //        .catch(err => {
+        //            document.getElementById("err_msg").textContent = err;
+        //        });
+        //};
+
+        function PutStudent(url, Method) {
+            document.getElementById("err_msg").textContent = "";
+
+            const lastIndex = url.lastIndexOf('/');
+            var id = -1;
+            if (lastIndex !== -1) {
+                id = url.substring(lastIndex + 1);
+            }
+
+            fetch(url, {
+                method: Method,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id: id,
+                    name: document.getElementById('name').value,
+                    phone: document.getElementById('phone').value
+                })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(errorData => {
+                            throw new Error(`HTTP Error: ${response.status} - ${response.statusText}\n${JSON.stringify(errorData)}`);
+                        });
+                    }
+                })
+                .catch(err => {
+                    try {
+                        var errorData = JSON.parse(err.message.substring(err.message.indexOf("{")));
+                        var detailsLink = errorData.linkForDetailes.details;
+                        document.getElementById("err_msg").innerHTML = `HTTP Error: ${errorData.code} - Bad Request. <a href="${detailsLink}" target="_blank">Details</a>`;
+                    } catch (SyntaxError) {
+                        document.getElementById("err_msg").textContent = err;
+                    }
+                });
+        };
+
+        function DeleteStudent(url) {
+            document.getElementById("err_msg").textContent = "";
+
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(errorData => {
+                            throw new Error(`HTTP Error: ${response.status} - ${response.statusText}\n${JSON.stringify(errorData)}`);
+                        });
+                    }
+                })
+                .catch(err => {
+                    try {
+                        var errorData = JSON.parse(err.message.substring(err.message.indexOf("{")));
+                        var detailsLink = errorData.linkForDetailes.details;
+                        document.getElementById("err_msg").innerHTML = `HTTP Error: ${errorData.code} - Bad Request. <a href="${detailsLink}" target="_blank">Details</a>`;
+                    } catch (SyntaxError) {
+                        document.getElementById("err_msg").textContent = err;
+                    }
+                });
+        }
+
+        function clean(table) {
+            table.innerHTML = '';
+        }
+
+        function constructTable(list) {
+            const selector = document.getElementById('result');
+            clean(selector);
+
+            const dvTable = $("#dvTable");
+            dvTable.html("");
+
+            // Getting the column names
+            const cols = Headers(list, selector);
+
+            // Helper function to create a cell with buttons for HATEOAS links
+            const createCellWithButtons = (link) => {
+                return `<button style="background-color: #007bff; color: white;" onclick='GetStudentById("${link[0].Href}", "get")'>get by ID</button>` +
+                    `<button style="background-color: #007bff; color: white;" onclick='GetStudents("${link[1].Href}", "get")'>get all</button>` +
+                    `<button style="background-color: #28a745; color: white;" onclick='PostStudent("${link[4].Href}", "post")'>add student</button>` +
+                    `<button style="background-color: #ffc107; color: white;" onclick='PutStudent("${link[2].Href}", "put")'>edit</button>` +
+                    `<button style="background-color: #dc3545; color: white;" onclick='DeleteStudent("${link[3].Href}", "delete")'>delete</button>`;
+            };
+
+            // Output the JSON data
+            for (let i = 0; i < list.length; i++) {
+                const row = $('<tr/>');
+                for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+                    let val = list[i][cols[colIndex]];
+
+                    // Handle null and 0 values
+                    if (val == null || val === 0) {
+                        val = "";
+                    }
+
+                    if (typeof val === "object") {
+                        row.append($('<td/>').html(createCellWithButtons(val)));
+                    } else {
+                        row.append($('<td/>').html(val));
+                    }
+                }
+
+                // Adding each row to the table
+                $(selector).append(row);
+            }
+        }
+
+        function Headers(list, selector) {
+            var columns = [];
+            var header = $('<tr/>');
+
+            for (var i = 0; i < list.length; i++) {
+                var row = list[i];
+
+                for (var k in row) {
+                    if ($.inArray(k, columns) == -1) {
+                        columns.push(k);
+
+                        // Creating the header
+                        header.append($('<th/>').html(k));
+                    }
+                }
+            }
+
+            // Appending the header to the table
+            $(selector).append(header);
+            return columns;
+        }
+
+        //function constructTableXml(xmlDoc) {
+        //    var selector = document.getElementById('result');
+        //    clean(selector);
+
+        //    var customers = $(xmlDoc).find("StudentApi");
+
+        //    //Create a HTML Table element.
+        //    var table = $("<table />");
+        //    table[0].border = "1";
+
+        //    //Add the header row.
+        //    var row = $(table[0].insertRow(-1));
+        //    customers.eq(0).children().each(function () {
+
+        //        var headerCell = $("<th />");
+        //        headerCell.html(this.nodeName);
+        //        row.append(headerCell);
+        //    });
+
+        //    //Add the data rows.
+        //    $(customers).each(function () {
+        //        row = $(table[0].insertRow(-1));
+        //        $(this).children().each(function () {
+        //            var cell = $("<td />");
+        //            cell.html($(this).text());
+        //            row.append(cell);
+        //        });
+        //    });
+
+        //    var dvTable = $("#dvTable");
+        //    dvTable.html("");
+        //    dvTable.append(table);
+        //}
+
+        function xmltable(data) {
+            var selector = document.getElementById('result');
+            clean(selector);
+            var content = "";
+            var table = "";
+            var $xml = $(data);
+            var $user = $xml.find("StudentApi");
+
+            table = "<table border='1'>" +
+                "<thead>" +
+                "<tr>" +
+                "<th>Id</th>" +
+                "<th>Name</th>" +
+                "<th>Phone</th>" +
+                "<th>HateoasLinks</th>" +
+                "</tr>" +
+                "</thead>" +
+                "<tbody id='age'></tbody>" +
+                "</table>";
+
+            $("#dvTable").html(table);
+
+            $user.each(function () {
+                var Id = $(this).find('Id').text();
+                var Name = $(this).find('Name').text();
+                var Phone = $(this).find('Phone').text();
+                var hateoasLinks = $(this).find('HateoasLinks').find('HateoasLink');
+
+                if (Id == 0) { Id = ""; }
+
+                var buttons = `<button style="background-color: #007bff; color: white;" onclick='GetStudentById("${$(hateoasLinks[0]).find('Href').text()}", "get")'>get by ID</button>` +
+                    `<button style="background-color: #007bff; color: white;" onclick='GetStudents("${$(hateoasLinks[1]).find('Href').text()}", "get")'>get all</button>` +
+                    `<button style="background-color: #28a745; color: white;" onclick='PostStudent("${$(hateoasLinks[4]).find('Href').text()}", "post")'>add student</button>` +
+                    `<button style="background-color: #ffc107; color: white;" onclick='PutStudent("${$(hateoasLinks[2]).find('Href').text()}", "put")'>edit</button>` +
+                    `<button style="background-color: #dc3545; color: white;" onclick='DeleteStudent("${$(hateoasLinks[3]).find('Href').text()}", "delete")'>delete</button>`;
+
+                content += "<tr>"
+                    + "<td>" + Id + "</td>"
+                    + "<td>" + Name + "</td>"
+                    + "<td>" + Phone + "</td>"
+                    + "<td>" + buttons + "</td>"
+                    + "</tr>";
+
+                $("#age").html(content);
+            });
+        }
+
+    </script>
+    <style type='text/css'>
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 6px 0;
+        }
+        input[name=post_inp] {
+            background-color: #28a745;
+            color: white;
+        }
+        input[name=get_inp] {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="err_msg" style="color:red"></div>
+    <br><br>
+    <div>
+        <table width="100%" cellspacing="0" cellpadding="5">
+            <tr>
+                <td height="74px" width="200" valign="top">
+                    <label>ID</label>
+                    <label>Name</label>
+                    <label>Phone</label>
+                </td>
+                <td valign="top">
+                    <input type="text" id="id" align="middle" />
+                    <br />
+                    <input type="text" id="name" align="middle" />
+                    <br />
+                    <input type="text" id="phone" align="middle" />
+                    <br />
+                </td>
+            </tr>
+        </table>
+        <br />
+        <input name="post_inp" type="button" onclick="PostStudent(null, null)" value="Add Student" />
+        <input name="get_inp" type="button" onclick="GetStudents(null, null)" value="Get Students" />
+        <br />
+
+        <input id="xml" type="radio" value="xml" name="type" /> XML
+        <input id="json" type="radio" value="json" name="type" checked=true /> JSON
+
+        <input type="checkbox" value="sort" name="sort" id="sort" /> Sort
+        <br>
+        <table width="100%" cellspacing="0" cellpadding="5">
+            <tr>
+                <td height="220px" width="200" valign="top">
+                    <label>Limit</label>
+                    <label>Offset</label>
+                    <label>Min ID</label>
+                    <label>Max ID</label>
+                    <label>Like (name)</label>
+                    <label>Global like</label>
+                    <label>Columns</label>
+                </td>
+                <td valign="top">
+                    <input type="number" id="limit" align="middle" />
+                    <br>
+                    <input type="number" name="offset" id="offset" align="middle" />
+                    <br>
+                    <input type="number" name="minid" id="minid" align="middle" />
+                    <br>
+                    <input type="number" name="maxid" id="maxid" align="middle" />
+                    <br>
+                    <input type="text" name="like" id="like" align="middle" />
+                    <br>
+                    <input type="text" name="globalike" id="globalike" align="middle" />
+                    <br>
+                    <input type="text" name="columns" id="columns" align="middle" />
+                    <br>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <table id="result" border="1"></table>
+        <br />
+        <div id="dvTable">
+        </div>
+    </div>
+</body>
+</html>

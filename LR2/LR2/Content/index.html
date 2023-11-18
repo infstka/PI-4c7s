@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>LR2</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>PI - LR2</h2>
+        <button onclick="sendGetRequest()" style="background-color: #007bff; color: white;">GET</button>
+        <button onclick="sendPostRequest()" style="background-color: #28a745; color: white;">POST</button>
+        <button onclick="sendPutRequest()" style="background-color: #ffc107; color: black;">PUT</button>
+        <button onclick="sendDeleteRequest()" style="background-color: #dc3545; color: white;">DELETE</button>
+        <br><br>
+        <label for="inputValue">Введите значение:</label>
+        <input type="text" id="inputValue">
+        <br><br>
+        <pre id="result"></pre>
+    </div>
+
+    <script>
+        const resultElement = $('#result');
+        const inputValueElement = $('#inputValue');
+
+        //62641
+        function sendGetRequest() {
+            $.ajax({
+                type: 'GET',
+                url: 'https://localhost:2023/api/pi',
+                success: function (data) {
+                    resultElement.text(JSON.stringify(data, null, 2));
+                },
+                error: function (error) {
+                    resultElement.text(error.responseJSON.Message);
+                    console.error('GET-запрос не выполнен:', error);
+                }
+            });
+        }
+
+        function sendPostRequest() {
+            const resultParameter = inputValueElement.val();
+            if (resultParameter !== '') {
+                $.ajax({
+                    type: 'POST',
+                    url: `https://localhost:2023/api/pi?result=${resultParameter}`,
+                    success: function () {
+                        resultElement.text('POST-запрос выполнен');
+                    },
+                    error: function (error) {
+                        resultElement.text(error.responseJSON.Message);
+                        console.error('POST-запрос не выполнен:', error);
+                    }
+                });
+            }
+        }
+
+        function sendPutRequest() {
+            const addParameter = inputValueElement.val();
+            if (addParameter !== '') {
+                $.ajax({
+                    type: 'PUT',
+                    url: `https://localhost:2023/api/pi?add=${addParameter}`,
+                    success: function () {
+                        resultElement.text('PUT-запрос выполнен');
+                    },
+                    error: function (error) {
+                        resultElement.text(error.responseJSON.Message);
+                        console.error('PUT-запрос не выполнен:', error);
+                    }
+                });
+            }
+        }
+
+        function sendDeleteRequest() {
+            $.ajax({
+                type: 'DELETE',
+                url: 'https://localhost:2023/api/pi',
+                success: function () {
+                    resultElement.text('DELETE-запрос выполнен');
+                },
+                error: function (error) {
+                    resultElement.text(error.responseJSON.Message);
+                    console.error('DELETE-запрос не выполнен:', error);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
