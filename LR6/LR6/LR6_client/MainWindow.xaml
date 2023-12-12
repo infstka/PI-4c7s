@@ -1,0 +1,50 @@
+﻿<Window x:Class="LR6_client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <Grid HorizontalAlignment="Stretch" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="Result" Grid.Column="0" VerticalScrollBarVisibility="Auto"/>
+
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="100 0 0 0">
+                <DockPanel LastChildFill="False" Margin="0 0 0 10">
+                    <Label Content="Filter column" DockPanel.Dock="Left"/>
+                    <TextBox Name="FilterColumn" Width="140" DockPanel.Dock="Right" VerticalContentAlignment="Center" Padding="10 0" />
+                </DockPanel>
+
+                <DockPanel LastChildFill="False" Margin="0 0 0 10">
+                    <Label Content="Filter value" DockPanel.Dock="Left"/>
+                    <TextBox Name="FilterValue" Width="140" DockPanel.Dock="Right" VerticalContentAlignment="Center" Padding="10 0"/>
+                </DockPanel>
+
+                <DockPanel LastChildFill="False" Margin="0 0 0 10">
+                    <Label Content="Order by colums" DockPanel.Dock="Left"/>
+                    <TextBox Name="OrderBy" Width="140" DockPanel.Dock="Right" VerticalContentAlignment="Center" Padding="10 0"/>
+                </DockPanel>
+
+                <DockPanel LastChildFill="False" >
+                    <Label Content="Columns (select)" DockPanel.Dock="Left"/>
+                    <TextBox Name="Select" Width="140" DockPanel.Dock="Right" VerticalContentAlignment="Center" Padding="10 0"/>
+                </DockPanel>
+            </StackPanel>
+        </Grid>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Name="GetStudents" Click="OnGetStudentsClick" Margin="0 0 20 0" Padding="10">Get Students</Button>
+            <Button Name="GetNotes" Click="OnGetNotesClick" Padding="10">Get Notes</Button>
+        </StackPanel>
+    </Grid>
+</Window>

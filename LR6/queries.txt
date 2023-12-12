@@ -1,0 +1,7 @@
+http://localhost:58061/StudentNotes.svc/$metadata
+http://localhost:58061/StudentNotes.svc/Students(id)
+http://localhost:58061/StudentNotes.svc/Students?$orderby=Name
+http://localhost:58061/StudentNotes.svc/Students?$select=Name
+http://localhost:58061/StudentNotes.svc/Students?$filter=Id%20lt%201 
+http://localhost:58061/StudentNotes.svc/Students?$filter=startswith(Name,%27f%27) 
+http://localhost:58061/StudentNotes.svc/Students(Id=1)
