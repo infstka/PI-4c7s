@@ -1,0 +1,16 @@
+D:\University\BSTU_7sem\asp\Done\lab_5\lab_5\Lab5_tcp_client\bin\Debug\Lab5_tcp_client.exe.config
+D:\University\BSTU_7sem\asp\Done\lab_5\lab_5\Lab5_tcp_client\bin\Debug\Lab5_tcp_client.exe
+D:\University\BSTU_7sem\asp\Done\lab_5\lab_5\Lab5_tcp_client\bin\Debug\Lab5_tcp_client.pdb
+D:\University\BSTU_7sem\asp\Done\lab_5\lab_5\Lab5_tcp_client\obj\Debug\Lab5_tcp_client.csproj.AssemblyReference.cache
+D:\University\BSTU_7sem\asp\Done\lab_5\lab_5\Lab5_tcp_client\obj\Debug\Lab5_tcp_client.csproj.SuggestedBindingRedirects.cache
+D:\University\BSTU_7sem\asp\Done\lab_5\lab_5\Lab5_tcp_client\obj\Debug\Lab5_tcp_client.csproj.CoreCompileInputs.cache
+D:\University\BSTU_7sem\asp\Done\lab_5\lab_5\Lab5_tcp_client\obj\Debug\Lab5_tcp_client.exe
+D:\University\BSTU_7sem\asp\Done\lab_5\lab_5\Lab5_tcp_client\obj\Debug\Lab5_tcp_client.pdb
+D:\BSTU\PI-4c7s\LR5\LR5_tcp_client\bin\Debug\LR5_tcp_client.exe.config
+D:\BSTU\PI-4c7s\LR5\LR5_tcp_client\bin\Debug\LR5_tcp_client.exe
+D:\BSTU\PI-4c7s\LR5\LR5_tcp_client\bin\Debug\LR5_tcp_client.pdb
+D:\BSTU\PI-4c7s\LR5\LR5_tcp_client\obj\Debug\LR5_tcp_client.csproj.AssemblyReference.cache
+D:\BSTU\PI-4c7s\LR5\LR5_tcp_client\obj\Debug\LR5_tcp_client.csproj.SuggestedBindingRedirects.cache
+D:\BSTU\PI-4c7s\LR5\LR5_tcp_client\obj\Debug\LR5_tcp_client.csproj.CoreCompileInputs.cache
+D:\BSTU\PI-4c7s\LR5\LR5_tcp_client\obj\Debug\LR5_tcp_client.exe
+D:\BSTU\PI-4c7s\LR5\LR5_tcp_client\obj\Debug\LR5_tcp_client.pdb
