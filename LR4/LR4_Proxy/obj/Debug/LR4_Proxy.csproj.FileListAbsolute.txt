@@ -1,0 +1,53 @@
+D:\Учеба\4 курс 1 семестр\Программирование web-сервисов\Лабы\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.csprojAssemblyReference.cache
+D:\Учеба\4 курс 1 семестр\Программирование web-сервисов\Лабы\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.Form1.resources
+D:\Учеба\4 курс 1 семестр\Программирование web-сервисов\Лабы\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.Properties.Resources.resources
+D:\Учеба\4 курс 1 семестр\Программирование web-сервисов\Лабы\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.csproj.GenerateResource.cache
+D:\Учеба\4 курс 1 семестр\Программирование web-сервисов\Лабы\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.csproj.CoreCompileInputs.cache
+D:\Учеба\4 курс 1 семестр\Программирование web-сервисов\Лабы\Lab_4\Lab_4_Proxy\bin\Debug\Lab_4_Proxy.exe.config
+D:\Учеба\4 курс 1 семестр\Программирование web-сервисов\Лабы\Lab_4\Lab_4_Proxy\bin\Debug\Lab_4_Proxy.exe
+D:\Учеба\4 курс 1 семестр\Программирование web-сервисов\Лабы\Lab_4\Lab_4_Proxy\bin\Debug\Lab_4_Proxy.pdb
+D:\Учеба\4 курс 1 семестр\Программирование web-сервисов\Лабы\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.exe
+D:\Учеба\4 курс 1 семестр\Программирование web-сервисов\Лабы\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.pdb
+D:\4\ВЕБ-сервисы\Lab_4\Lab_4_Proxy\bin\Debug\Lab_4_Proxy.exe.config
+D:\4\ВЕБ-сервисы\Lab_4\Lab_4_Proxy\bin\Debug\Lab_4_Proxy.exe
+D:\4\ВЕБ-сервисы\Lab_4\Lab_4_Proxy\bin\Debug\Lab_4_Proxy.pdb
+D:\4\ВЕБ-сервисы\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.csprojAssemblyReference.cache
+D:\4\ВЕБ-сервисы\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.Form1.resources
+D:\4\ВЕБ-сервисы\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.Properties.Resources.resources
+D:\4\ВЕБ-сервисы\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.csproj.GenerateResource.cache
+D:\4\ВЕБ-сервисы\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.csproj.CoreCompileInputs.cache
+D:\4\ВЕБ-сервисы\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.exe
+D:\4\ВЕБ-сервисы\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.pdb
+D:\University\BSTU_7sem\asp\Done\lab_4\Lab_4\Lab_4_Proxy\bin\Debug\Lab_4_Proxy.exe.config
+D:\University\BSTU_7sem\asp\Done\lab_4\Lab_4\Lab_4_Proxy\bin\Debug\Lab_4_Proxy.exe
+D:\University\BSTU_7sem\asp\Done\lab_4\Lab_4\Lab_4_Proxy\bin\Debug\Lab_4_Proxy.pdb
+D:\University\BSTU_7sem\asp\Done\lab_4\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.csproj.AssemblyReference.cache
+D:\University\BSTU_7sem\asp\Done\lab_4\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.csproj.SuggestedBindingRedirects.cache
+D:\University\BSTU_7sem\asp\Done\lab_4\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.Form1.resources
+D:\University\BSTU_7sem\asp\Done\lab_4\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.Properties.Resources.resources
+D:\University\BSTU_7sem\asp\Done\lab_4\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.csproj.GenerateResource.cache
+D:\University\BSTU_7sem\asp\Done\lab_4\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.csproj.CoreCompileInputs.cache
+D:\University\BSTU_7sem\asp\Done\lab_4\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.exe
+D:\University\BSTU_7sem\asp\Done\lab_4\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.pdb
+D:\BSTU\PI-4c7s\Lab_4\Lab_4_Proxy\bin\Debug\Lab_4_Proxy.exe.config
+D:\BSTU\PI-4c7s\Lab_4\Lab_4_Proxy\bin\Debug\Lab_4_Proxy.exe
+D:\BSTU\PI-4c7s\Lab_4\Lab_4_Proxy\bin\Debug\Lab_4_Proxy.pdb
+D:\BSTU\PI-4c7s\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.csproj.AssemblyReference.cache
+D:\BSTU\PI-4c7s\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.csproj.SuggestedBindingRedirects.cache
+D:\BSTU\PI-4c7s\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.Form1.resources
+D:\BSTU\PI-4c7s\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.Properties.Resources.resources
+D:\BSTU\PI-4c7s\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.csproj.GenerateResource.cache
+D:\BSTU\PI-4c7s\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.csproj.CoreCompileInputs.cache
+D:\BSTU\PI-4c7s\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.exe
+D:\BSTU\PI-4c7s\Lab_4\Lab_4_Proxy\obj\Debug\Lab_4_Proxy.pdb
+D:\BSTU\PI-4c7s\LR4\LR4_Proxy\bin\Debug\LR4_Proxy.exe.config
+D:\BSTU\PI-4c7s\LR4\LR4_Proxy\bin\Debug\LR4_Proxy.exe
+D:\BSTU\PI-4c7s\LR4\LR4_Proxy\bin\Debug\LR4_Proxy.pdb
+D:\BSTU\PI-4c7s\LR4\LR4_Proxy\obj\Debug\LR4_Proxy.csproj.AssemblyReference.cache
+D:\BSTU\PI-4c7s\LR4\LR4_Proxy\obj\Debug\LR4_Proxy.csproj.SuggestedBindingRedirects.cache
+D:\BSTU\PI-4c7s\LR4\LR4_Proxy\obj\Debug\LR4_Proxy.Form1.resources
+D:\BSTU\PI-4c7s\LR4\LR4_Proxy\obj\Debug\LR4_Proxy.Properties.Resources.resources
+D:\BSTU\PI-4c7s\LR4\LR4_Proxy\obj\Debug\LR4_Proxy.csproj.GenerateResource.cache
+D:\BSTU\PI-4c7s\LR4\LR4_Proxy\obj\Debug\LR4_Proxy.csproj.CoreCompileInputs.cache
+D:\BSTU\PI-4c7s\LR4\LR4_Proxy\obj\Debug\LR4_Proxy.exe
+D:\BSTU\PI-4c7s\LR4\LR4_Proxy\obj\Debug\LR4_Proxy.pdb
